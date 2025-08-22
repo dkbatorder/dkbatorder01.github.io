@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You - DKBat</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      text-align: center;
+    }
+    .card {
+      background: white;
+      color: #333;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0px 6px 14px rgba(0,0,0,0.3);
+      width: 90%;
+      max-width: 400px;
+    }
+    h2 {
+      color: #2575fc;
+    }
+    p {
+      font-size: 16px;
+      margin: 8px 0;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 18px;
+      background: #2575fc;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .btn:hover {
+      background: #1b5ed7;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>✅ Thank You!</h2>
+    <p>Your booking has been confirmed.</p>
+    <p id="details"></p>
+    <a href="index.html" class="btn">Book Another</a>
+  </div>
+
+  <script>
+    // Read booking details from URL
+    const params = new URLSearchParams(window.location.search);
+    const massage = params.get("massage");
+    const date = params.get("date");
+    const time = params.get("time");
+
+    if (massage && date && time) {
+      document.getElementById("details").innerText =
+        `Massage: ${massage}\nDate: ${date}\nTime: ${time}`;
+    }
+  </script>
+</body>
+</html>
