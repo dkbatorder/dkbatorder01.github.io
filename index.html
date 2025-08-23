@@ -78,12 +78,13 @@
   </header>
 
   <div class="container">
-    <form>
+    <form id="bookingForm">
       <label for="massage">Choose Massage Type:</label>
-      <select id="massage" name="massage">
-        <option value="hand">Hand Massage</option>
-        <option value="full">Full Body Massage</option>
-        <option value="crawling">Crawling Massage</option>
+      <select id="massage" name="massage" required>
+        <option value="">-- Select --</option>
+        <option value="Hand Massage">Hand Massage</option>
+        <option value="Full Body Massage">Full Body Massage</option>
+        <option value="Crawling Massage">Crawling Massage</option>
       </select>
 
       <label for="date">Pick a Date:</label>
@@ -95,5 +96,20 @@
       <button type="submit">Book Now</button>
     </form>
   </div>
+
+  <script>
+    document.getElementById("bookingForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // stop page refresh
+      const massage = document.getElementById("massage").value;
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+
+      if (massage && date && time) {
+        alert(`✅ Booking Confirmed!\n\nMassage: ${massage}\nDate: ${date}\nTime: ${time}`);
+      } else {
+        alert("⚠️ Please fill all fields before booking.");
+      }
+    });
+  </script>
 </body>
 </html>
