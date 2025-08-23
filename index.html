@@ -3,100 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DKBat Massage Booking</title>
+  <title>DKBat Order</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-    }
-    .container {
-      background: white;
-      padding: 25px;
-      border-radius: 16px;
-      box-shadow: 0px 6px 14px rgba(0,0,0,0.3);
-      width: 90%;
-      max-width: 400px;
+      background: #f9f9f9;
       text-align: center;
     }
-    .logo {
-      max-width: 100px;
-      margin-bottom: 15px;
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 15px;
     }
-    h2 {
-      margin: 10px 0 20px;
-      color: #333;
-      font-size: 20px;
+    header img {
+      height: 60px;
+      display: block;
+      margin: 0 auto 10px;
+    }
+    form {
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 400px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
     label {
       display: block;
-      margin: 10px 0 5px;
+      margin: 15px 0 5px;
       text-align: left;
-      font-size: 14px;
-      font-weight: bold;
-      color: #444;
     }
     select, input, button {
       width: 100%;
-      padding: 12px;
+      padding: 10px;
       margin-bottom: 15px;
-      border-radius: 10px;
       border: 1px solid #ccc;
-      font-size: 15px;
+      border-radius: 5px;
     }
     button {
-      background: #2575fc;
+      background: #4CAF50;
       color: white;
-      border: none;
-      cursor: pointer;
       font-size: 16px;
-      font-weight: bold;
-      transition: 0.3s;
+      cursor: pointer;
     }
     button:hover {
-      background: #1b5ed7;
+      background: #45a049;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Logo placeholder -->
-    <img src="logo.png" alt="Shop Local Logo" class="logo" onerror="this.style.display='none'">
-    <h2>Book Your Massage</h2>
+  <header>
+    <img src="logo.jpg" alt="DKBat Logo">
+    <h1>DKBat Order</h1>
+  </header>
 
-    <form onsubmit="handleSubmit(event)">
-      <label for="massage">Select Massage Type</label>
-      <select id="massage" name="massage" required>
-        <option value="Hand Massage">Hand Massage</option>
-        <option value="Full Body Massage">Full Body Massage</option>
-        <option value="Crawling Massage">Crawling Massage</option>
-      </select>
+  <form id="orderForm">
+    <label for="massage">Choose Massage Type:</label>
+    <select id="massage" name="massage" required>
+      <option value="">-- Select a massage --</option>
+      <option value="hand">Hand Massage</option>
+      <option value="fullbody">Full Body Massage</option>
+      <option value="crawling">Crawling Massage</option>
+    </select>
 
-      <label for="date">Choose Date</label>
-      <input type="date" id="date" name="date" required>
+    <label for="date">Choose Date:</label>
+    <input type="date" id="date" name="date" required>
 
-      <label for="time">Choose Time</label>
-      <input type="time" id="time" name="time" required>
+    <label for="time">Choose Time:</label>
+    <input type="time" id="time" name="time" required>
 
-      <button type="submit">Submit Booking</button>
-    </form>
-  </div>
+    <button type="submit">Submit</button>
+  </form>
 
   <script>
-    function handleSubmit(event) {
-      event.preventDefault();
+    document.getElementById("orderForm").addEventListener("submit", function(e) {
+      e.preventDefault();
       const massage = document.getElementById("massage").value;
       const date = document.getElementById("date").value;
       const time = document.getElementById("time").value;
 
-      // Redirect to thankyou.html with booking details
-      window.location.href = `thankyou.html?massage=${encodeURIComponent(massage)}&date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}`;
-    }
+      if (massage && date && time) {
+        alert("Booking Confirmed!\nMassage: " + massage + "\nDate: " + date + "\nTime: " + time);
+      } else {
+        alert("Please fill out all fields.");
+      }
+    });
   </script>
 </body>
 </html>
